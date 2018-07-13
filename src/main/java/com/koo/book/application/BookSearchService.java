@@ -15,4 +15,7 @@ public class BookSearchService {
 		Map<String,Object> searched = bookRepository.searchBookInfo(searchAppKey);
 		return searched;
 	}
+	public String test(){
+		return bookRepository.test();
+	}
 }

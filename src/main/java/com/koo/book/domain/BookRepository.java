@@ -7,4 +7,6 @@ import java.util.Map;
 public interface BookRepository {
 
 	Map<String, Object> searchBookInfo(SearchAppKey searchAppKey);
+
+	String test();
 }
