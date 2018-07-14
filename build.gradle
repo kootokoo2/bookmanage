@@ -20,8 +20,12 @@ group = 'com.koo'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
+ext {
+	spockVersion = "1.0-groovy-2.4"
+}
 
-ist spock = [
+
+List spock = [
 		"org.spockframework:spock-core:${spockVersion}",
 		"org.spockframework:spock-spring:${spockVersion}"
 ]
@@ -31,19 +35,17 @@ repositories {
 }
 
 
-ext {
-	spockVersion = "1.0-groovy-2.4"
-	jacksonVersion = "2.9.6"
-}
+
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-security')
-	compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: ${jacksonVersion}
-
+	compile group: 'net.jodah', name: 'typetools', version: '0.4.2'
 	runtime('com.h2database:h2')
+
+
 
 
 	compileOnly('org.projectlombok:lombok')

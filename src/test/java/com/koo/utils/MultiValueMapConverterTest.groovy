@@ -1,13 +1,13 @@
 package com.koo.utils
 
 import com.koo.book.application.SearchAppKey
-import com.koo.book.application.SearchType
+import com.koo.book.application.SearchTarget
 import spock.lang.Specification
 
 class MultiValueMapConverterTest extends Specification {
 	def "data get test" (){
 		given:
-		def target = SearchType.title
+		def target = SearchTarget.title
 		def searchAppKey = new SearchAppKey()
 		searchAppKey.setTarget(target)
 

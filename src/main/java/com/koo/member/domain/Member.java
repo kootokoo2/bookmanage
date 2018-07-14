@@ -1,5 +1,6 @@
 package com.koo.member.domain;
 
+import com.koo.utils.timelistener.CreatedAndModifiedEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,9 +15,10 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @ToString
-public class Member {
+public class Member extends CreatedAndModifiedEntity {
 	@Id
 	@GeneratedValue
+	@Column(name = "memberId")
 	private Long id;
 
 	@Column

@@ -12,7 +12,7 @@ public class SearchAppKey {
 	private SearchSort sort;
 	private Integer page;
 	private Integer size;
-	private SearchType target;
+	private SearchTarget target;
 	private String category;
 
 }

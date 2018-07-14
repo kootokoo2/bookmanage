@@ -1,6 +1,6 @@
 package com.koo.book.application;
 
-public enum SearchType {
+public enum SearchTarget {
 	all("전체"),
 	title("제목"),
 	isbn("ISBN으로 검색"),
@@ -11,7 +11,7 @@ public enum SearchType {
 
 	private String description;
 
-	SearchType(String description) {
+	SearchTarget(String description) {
 		this.description = description;
 	}
 }
