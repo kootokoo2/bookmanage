@@ -1,12 +1,10 @@
 package com.koo.book.domain;
 
 import com.koo.book.application.SearchAppKey;
-
-import java.util.Map;
+import org.springframework.util.MultiValueMap;
 
 public interface BookRepository {
 
-	Map<String, Object> searchBookInfo(SearchAppKey searchAppKey);
-
-	String test();
+	BookSearchResult searchBookInfo(SearchAppKey searchAppKey);
+	BookSearchResult searchBookInfo(MultiValueMap<String,String> params);
 }

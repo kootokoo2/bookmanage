@@ -1,21 +1,21 @@
 package com.koo.book.application;
 
 import com.koo.book.domain.BookRepository;
+import com.koo.book.domain.BookSearchResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
+import org.springframework.util.MultiValueMap;
 
 @Service
 public class BookSearchService {
 	@Autowired
 	private BookRepository bookRepository;
 
-	public Map<String,Object> searchBookInfo(SearchAppKey searchAppKey){
-		Map<String,Object> searched = bookRepository.searchBookInfo(searchAppKey);
-		return searched;
+	public BookSearchResult  searchBookInfo(SearchAppKey searchAppKey) {
+		return bookRepository.searchBookInfo(searchAppKey);
 	}
-	public String test(){
-		return bookRepository.test();
+
+	public BookSearchResult searchBookInfoWithMap(MultiValueMap<String, String> params) {
+		return bookRepository.searchBookInfo(params);
 	}
 }

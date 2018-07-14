@@ -1,21 +1,18 @@
 package com.koo.book.application;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.validation.constraints.NotNull;
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class SearchAppKey {
-	@NotNull
 	private String query;
 	private SearchSort sort;
-	private int page;
-	private int size;
+	private Integer page;
+	private Integer size;
 	private SearchType target;
-	private int category;
+	private String category;
 
 }

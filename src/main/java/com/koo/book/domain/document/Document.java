@@ -19,7 +19,7 @@ public class Document {
 	private String barcode;
 	private String category;
 	private String contents;
-	private Date localDateTime;
+	private Date datetime;
 	private String ebook_barcode;
 	private String isbn;
 	private long price;
