@@ -26,6 +26,10 @@ public class Member extends CreatedAndModifiedEntity {
 	@Column
 	private String password;
 
+	private String getPassword() {
+		return password;
+	}
+
 	public boolean match(String password) {
 		return this.password.equals(password);
 	}

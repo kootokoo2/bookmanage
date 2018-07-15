@@ -2,11 +2,12 @@ package com.koo.web;
 
 import com.koo.member.application.MemberService;
 import com.koo.member.application.MemberVo;
-import com.koo.member.domain.Member;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class MemberController {
@@ -14,15 +15,30 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	@PostMapping("/signUp")
+	@PostMapping("/member/signUp")
 	public String singUp(@RequestBody MemberVo memberVo) {
-		Member member = memberService.signUp(memberVo);
-		return "success" + member.toString();
+		memberService.signUp(memberVo);
+		return "success";
 	}
 
-	@PostMapping("/signIn")
+	@PostMapping("/member/signIn")
 	public String signIn(@RequestBody MemberVo memberVo) {
-		Member member = memberService.signIn(memberVo);
-		return "success" + member.toString();
+		memberService.signIn(memberVo);
+		return "success";
 	}
+
+	@GetMapping("/signin")
+	public ModelAndView signInView() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("member/signin");
+		return modelAndView;
+	}
+
+	@GetMapping("/signup")
+	public ModelAndView signupView() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("member/signup");
+		return modelAndView;
+	}
+
 }

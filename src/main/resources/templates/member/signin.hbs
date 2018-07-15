@@ -1,0 +1,21 @@
+{{# partial "content" }}
+
+<div class="signin">
+  <h2 class="signin-header">sign in</h2>
+
+  <form class="login-container">
+    <p><input type="text" id="userId" placeholder="userId"></p>
+    <p><input type="password" id="password" placeholder="password"></p>
+    <p><input type="button" id="singInBtn" value="sign in"></p>
+  </form>
+
+</div>
+
+
+{{/partial}}
+
+{{# partial "page-script" }}
+  <script src="/js/app/member/signin.js"></script>
+{{/partial}}
+
+{{>layout}}

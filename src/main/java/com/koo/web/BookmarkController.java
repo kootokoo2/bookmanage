@@ -13,7 +13,6 @@ public class BookmarkController {
 	@Autowired
 	private BookmarkService bookmarkService;
 
-
 	@PostMapping("/bookmark/save")
 	public String save(@RequestBody BookmarkVo bookmarkVo) {
 		bookmarkService.save(bookmarkVo);

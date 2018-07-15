@@ -6,6 +6,10 @@ import com.koo.member.application.searchhistory.SearchHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class BookSearchService {
 	@Autowired
@@ -19,6 +23,11 @@ public class BookSearchService {
 	}
 
 	private void saveSearchHistory(SearchAppKey searchAppKey, Long memberId) {
-		searchHistoryService.saveSearched(memberId, searchAppKey.getTarget(),searchAppKey.getQuery());
+		searchHistoryService.saveSearched(memberId, searchAppKey.getTarget(), searchAppKey.getQuery());
+	}
+
+	public List<String> getSearchTargetList() {
+		return Arrays.asList(SearchTarget.values()).stream().map(a -> a.name())
+			.collect(Collectors.toList());
 	}
 }

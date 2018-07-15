@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @RestController
 public class BookController {
@@ -15,16 +18,23 @@ public class BookController {
 	@Autowired
 	private BookSearchService bookSearchService;
 
+	@PostMapping("/book/search")
+	public ModelAndView search(@RequestBody SearchAppKey searchAppKey) {
+		BookSearchResult bookSearchResult = bookSearchService.searchBookInfo(searchAppKey, searchAppKey.getMemberId());
 
-	@GetMapping("/hello")
-	public String hello() {
-		return "main";
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/search/search");
+		modelAndView.addObject("bookSearchResult", bookSearchResult);
+		return modelAndView;
 	}
 
-	@PostMapping("/search")
-	public String search(@RequestBody SearchAppKey searchAppKey) {
-		BookSearchResult bookSearchResult = bookSearchService.searchBookInfo(searchAppKey, searchAppKey.getMemberId());
-		return bookSearchResult.toString();
+	@GetMapping("/book/main")
+	public ModelAndView bookMain() {
+		List<String> searchTargetNames = bookSearchService.getSearchTargetList();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("search/main");
+		modelAndView.addObject("searchTargetNames", searchTargetNames);
+		return modelAndView;
 	}
 
 }

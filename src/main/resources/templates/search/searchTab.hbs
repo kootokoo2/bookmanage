@@ -1,0 +1,17 @@
+<div class="search-tab">
+
+  <h2 class="col-md-6">search book</h2>
+
+  <form class="search-tab-container">
+    <select id="landingSelect" class="col-md-1">
+      {{#each searchTargetNames }}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+    <input type="text" id="searchKey" placeholder="searchKey">
+    <p>
+      <button type="button" id="searchButton">검색</button>
+    </p>
+  </form>
+
+</div>

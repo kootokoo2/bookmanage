@@ -14,4 +14,5 @@ public enum SearchTarget {
 	SearchTarget(String description) {
 		this.description = description;
 	}
+
 }
