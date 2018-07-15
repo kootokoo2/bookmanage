@@ -2,10 +2,7 @@ package com.koo.book.domain.document;
 
 import com.koo.book.domain.document.author.Author;
 import com.koo.book.domain.document.transrator.Translator;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
@@ -14,6 +11,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Document {
 	private List<Author> authors;
 	private String barcode;

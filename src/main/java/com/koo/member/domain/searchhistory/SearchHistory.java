@@ -19,12 +19,11 @@ public class SearchHistory extends CreatedAndModifiedEntity {
 	private Long id;
 
 	@Column
-	private Long memberId;
-
-	@Column
 	@Enumerated(EnumType.STRING)
 	private SearchTarget target;
 	@Column
 	private String query;
 
+	@Column
+	private Long memberId;
 }

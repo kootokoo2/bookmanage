@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SearchHistoryRepositoryImpl extends JpaRepository<SearchHistory, Long>, SearchHistoryRepository {
+public interface SearchHistoryJpaRepositoryImpl extends JpaRepository<SearchHistory, Long>, SearchHistoryRepository {
 
 }

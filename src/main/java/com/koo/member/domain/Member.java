@@ -1,14 +1,15 @@
 package com.koo.member.domain;
 
+import com.koo.member.domain.bookmark.Bookmark;
+import com.koo.member.domain.searchhistory.SearchHistory;
 import com.koo.utils.timelistener.CreatedAndModifiedEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Setter
@@ -29,8 +30,21 @@ public class Member extends CreatedAndModifiedEntity {
 		return this.password.equals(password);
 	}
 
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "memberId")
+	private List<Bookmark> bookmarkList;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "searchHistoryId")
+	private List<SearchHistory> searchHistoryList;
+
 	public String makeEncryptionPassword(PasswordEncoder passwordEncoder, String origin) {
 		return passwordEncoder.encode(origin);
+	}
+
+	public boolean hasBookmakrAlready(String isbn) {
+		List<String> isbnList = this.bookmarkList.stream().map(bookmark -> bookmark.getIsbn()).collect(Collectors.toList());
+		return isbnList.contains(isbn);
 	}
 
 }

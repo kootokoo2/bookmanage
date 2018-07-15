@@ -1,6 +1,8 @@
 package com.koo.member.application.searchhistory;
 
 import com.koo.book.application.SearchTarget;
+import com.koo.member.application.MemberService;
+import com.koo.member.domain.Member;
 import com.koo.member.domain.searchhistory.SearchHistory;
 import com.koo.member.domain.searchhistory.SearchHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +14,14 @@ public class SearchHistoryService {
 	@Autowired
 	private SearchHistoryRepository searchHistoryRepository;
 
-	@Transactional
-	public void saveSearched(SearchHistoryVo searchHistoryVo) {
-		saveSearched(123L, searchHistoryVo.getTarget(), searchHistoryVo.getQuery());
-	}
+	@Autowired
+	private MemberService memberService;
 
 	@Transactional
 	public void saveSearched(Long memberId, SearchTarget target, String query) {
+		Member member = memberService.getMember(memberId);
 		SearchHistory searchHistory = SearchHistory.builder()
-			.memberId(memberId)
+			.memberId(member.getId())
 			.target(target)
 			.query(query)
 			.build();

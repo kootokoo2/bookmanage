@@ -18,6 +18,10 @@ public class MemberService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	public Member getMember(Long memberId) {
+		return memberRepository.findById(memberId).orElseThrow(() -> new UserNotFoundException("조회되는 유저가 없습니다"));
+	}
+
 	public Member signIn(MemberVo memberVo) {
 		String userId = memberVo.getUserId();
 		return memberRepository.findByUserId(userId).orElseThrow(() -> new UserNotFoundException("조회되는 유저가 없습니다"));
