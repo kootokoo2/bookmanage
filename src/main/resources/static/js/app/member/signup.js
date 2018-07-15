@@ -1,5 +1,5 @@
 
-$('#singUpBtn').on('click', function signin() {
+$('#singUpBtn').on('click', function signup() {
   var form = {
     userId: $('#userId').val(),
     password: $('#password').val()
@@ -13,7 +13,7 @@ $('#singUpBtn').on('click', function signin() {
       location.href= "/signin"
     },
     error: function (data) {
-      alert(data.message); //error message
+      alert(data.responseJSON.message)
     }
   });
 });

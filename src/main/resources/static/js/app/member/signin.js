@@ -1,4 +1,4 @@
-$('#singInBtn').on('click', function signin() {
+$('#signInBtn').on('click', function signin() {
   var form = {
     userId: $('#userId').val(),
     password: $('#password').val()
@@ -11,8 +11,9 @@ $('#singInBtn').on('click', function signin() {
     success: function (data) {
       location.href= "/book/main"
     },
-    error: function (data) {
-      alert(data.message()); //error message
+    error:function(data){
+      alert(data.responseJSON.message)
+      location.href= "/signup"
     }
   });
 });

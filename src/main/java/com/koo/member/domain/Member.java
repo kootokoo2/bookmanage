@@ -39,7 +39,7 @@ public class Member extends CreatedAndModifiedEntity {
 	private List<Bookmark> bookmarkList;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "searchHistoryId")
+	@JoinColumn(name = "memberId")
 	private List<SearchHistory> searchHistoryList;
 
 	public String makeEncryptionPassword(PasswordEncoder passwordEncoder, String origin) {
