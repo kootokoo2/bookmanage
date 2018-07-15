@@ -2,7 +2,6 @@ package com.koo.member.application;
 
 import com.koo.member.application.exception.ExistUserException;
 import com.koo.member.application.exception.UserNotFoundException;
-import com.koo.member.application.vo.MemberVo;
 import com.koo.member.domain.Member;
 import com.koo.member.domain.MemberRepository;
 import com.koo.member.domain.PasswordEncoder;

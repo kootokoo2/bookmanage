@@ -14,5 +14,6 @@ public class SearchAppKey {
 	private Integer size;
 	private SearchTarget target;
 	private String category;
+	private Long memberId;
 
 }

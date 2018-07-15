@@ -1,7 +1,7 @@
 package com.koo.web;
 
 import com.koo.member.application.MemberService;
-import com.koo.member.application.vo.MemberVo;
+import com.koo.member.application.MemberVo;
 import com.koo.member.domain.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +21,7 @@ public class MemberController {
 	}
 
 	@PostMapping("/signIn")
-	public String signin(@RequestBody MemberVo memberVo) {
+	public String signIn(@RequestBody MemberVo memberVo) {
 		Member member = memberService.signIn(memberVo);
 		return "success" + member.toString();
 	}

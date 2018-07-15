@@ -9,7 +9,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -42,27 +41,8 @@ public class ExternalBookRestTemplate implements BookRepository {
 		header.add("Authorization", API_AUTH);
 		HttpEntity<String> entity = new HttpEntity<String>("parameters", header);
 
-		ResponseEntity<BookSearchResult> result = new RestTemplate().exchange(uri, HttpMethod.GET, entity, BookSearchResult.class);
+		ResponseEntity<BookSearchResult> result = restTemplate.exchange(uri, HttpMethod.GET, entity, BookSearchResult.class);
 		return result.getBody();
 	}
 
-	@Override
-	public BookSearchResult searchBookInfo(MultiValueMap<String, String> params) {
-
-		URI uri = UriComponentsBuilder.newInstance()
-			.scheme("http")
-			.host(HOST)
-			.path(PATH)
-			.queryParams(params)
-			.build()
-			.encode()
-			.toUri();
-
-		HttpHeaders header = new HttpHeaders();
-		header.add("Authorization", API_AUTH);
-		HttpEntity<String> entity = new HttpEntity<String>("parameters", header);
-
-		ResponseEntity<BookSearchResult> result = new RestTemplate().exchange(uri, HttpMethod.GET, entity, BookSearchResult.class);
-		return result.getBody();
-	}
 }

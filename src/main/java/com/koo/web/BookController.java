@@ -14,14 +14,15 @@ public class BookController {
 
 	@Autowired
 	private BookSearchService bookSearchService;
+
 	@GetMapping("/hello")
 	public String hello() {
 		return "main";
 	}
 
 	@PostMapping("/search")
-	public String test(@RequestBody SearchAppKey searchAppKey) {
-		BookSearchResult bookSearchResult = bookSearchService.searchBookInfo(searchAppKey);
+	public String search(@RequestBody SearchAppKey searchAppKey) {
+		BookSearchResult bookSearchResult = bookSearchService.searchBookInfo(searchAppKey, searchAppKey.getMemberId());
 		return bookSearchResult.toString();
 	}
 

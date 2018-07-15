@@ -1,4 +1,4 @@
-package com.koo.member.application.vo;
+package com.koo.member.application;
 
 import lombok.*;
 

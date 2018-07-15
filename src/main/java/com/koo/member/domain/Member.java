@@ -9,7 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.time.LocalDateTime;
 
 @Entity
 @Setter
@@ -33,10 +32,5 @@ public class Member extends CreatedAndModifiedEntity {
 	public String makeEncryptionPassword(PasswordEncoder passwordEncoder, String origin) {
 		return passwordEncoder.encode(origin);
 	}
-
-	@Column
-	private LocalDateTime createdAt;
-	@Column
-	private LocalDateTime modifiedAt;
 
 }

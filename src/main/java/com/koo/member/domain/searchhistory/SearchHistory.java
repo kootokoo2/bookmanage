@@ -2,11 +2,16 @@ package com.koo.member.domain.searchhistory;
 
 import com.koo.book.application.SearchTarget;
 import com.koo.utils.timelistener.CreatedAndModifiedEntity;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@Setter
+@Builder
 public class SearchHistory extends CreatedAndModifiedEntity {
 	@Id
 	@GeneratedValue
@@ -22,8 +27,4 @@ public class SearchHistory extends CreatedAndModifiedEntity {
 	@Column
 	private String query;
 
-	@Column
-	private LocalDateTime createdAt;
-	@Column
-	private LocalDateTime modifiedAt;
 }
