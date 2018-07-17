@@ -29,9 +29,7 @@
       <div class="form-group row">
         <label for="user-name3" class="col-md-3"> authors </label>
         <label class="col-md-7 ">
-          {{#each document.authors}}
-            {{this}}
-          {{/each}}
+            {{document.authors}}
         </label>
       </div>
     </div>
@@ -41,9 +39,7 @@
     <div class="col-md-6">
       <div class="form-group row">
         <label for="user-name3" class="col-md-3"> translators </label>
-        {{#each document.translators}}
-          <label class="col-md-7 ">{{this}}</label>
-        {{/each}}
+          <label class="col-md-7 ">{{document.translators}}</label>
       </div>
     </div>
   </div>
