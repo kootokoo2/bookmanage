@@ -1,7 +1,7 @@
-package com.koo.member.infra.bookmark;
+package com.koo.bookmark.infra.bookmark;
 
-import com.koo.member.domain.bookmark.Bookmark;
-import com.koo.member.domain.bookmark.BookmarkRepository;
+import com.koo.bookmark.domain.bookmark.Bookmark;
+import com.koo.bookmark.domain.bookmark.BookmarkRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,16 +1,15 @@
-package com.koo.member.application.bookmark;
+package com.koo.bookmark.application;
 
+import com.koo.bookmark.domain.bookmark.Bookmark;
+import com.koo.bookmark.domain.bookmark.BookmarkRepository;
 import com.koo.member.application.MemberService;
-import com.koo.member.application.bookmark.exception.CannotFindMemberBookmarksException;
 import com.koo.member.application.exception.AlreadySavedIsbn;
 import com.koo.member.domain.Member;
-import com.koo.member.domain.bookmark.Bookmark;
-import com.koo.member.domain.bookmark.BookmarkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Optional;
 
 @Component
 public class BookmarkService {
@@ -20,13 +19,9 @@ public class BookmarkService {
 	@Autowired
 	private MemberService memberService;
 
-	public List<String> getBookMarkList(long memberId) {
-		try {
-			return bookmarkRepository.findByMemberId(memberId);
-		} catch (Exception e) {
-			throw new CannotFindMemberBookmarksException("회원의 bookMark 기록을 찾을 수 없습니다.");
-		}
-
+	public boolean isExistBookmark(Long memberId, String isbn) {
+		Optional<Bookmark> byMemberIdAndIsbn = bookmarkRepository.findByMemberIdAndIsbn(memberId, isbn);
+		return byMemberIdAndIsbn.isPresent();
 	}
 
 	@Transactional
@@ -37,7 +32,7 @@ public class BookmarkService {
 		if (member.hasBookmakrAlready(isbn)) {
 			throw new AlreadySavedIsbn("이미 저장된 ISBN 입니다. isbn : " + isbn);
 		} else {
-			Bookmark bookmark = makeBookmark(bookmarkVo, member.getId());
+			Bookmark bookmark = makeBookmark(bookmarkVo.getIsbn(), member.getId());
 			member.getBookmarkList().add(bookmark);
 			bookmarkRepository.save(bookmark);
 		}
@@ -48,11 +43,11 @@ public class BookmarkService {
 		bookmarkRepository.deleteByMemberIdAndIsbn(bookmarkVo.getMemberId(), bookmarkVo.getIsbn());
 	}
 
-	private Bookmark makeBookmark(BookmarkVo bookmarkVo, Long memberId) {
-		return Bookmark.builder()
-			.memberId(memberId)
-			.isbn(bookmarkVo.getIsbn())
-			.build();
+	private Bookmark makeBookmark(String isbn, Long memberId) {
+		Bookmark bookmark = new Bookmark();
+		bookmark.setMemberId(memberId);
+		bookmark.setIsbn(isbn);
+		return bookmark;
 	}
 
 }

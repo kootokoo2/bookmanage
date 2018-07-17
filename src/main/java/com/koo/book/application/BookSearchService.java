@@ -4,6 +4,7 @@ import com.koo.book.application.exception.DetailSearchFailedException;
 import com.koo.book.domain.BookRepository;
 import com.koo.book.domain.BookSearchResult;
 import com.koo.book.domain.document.Document;
+import com.koo.bookmark.application.BookmarkService;
 import com.koo.member.application.searchhistory.SearchHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,24 @@ public class BookSearchService {
 	private BookRepository bookRepository;
 	@Autowired
 	private SearchHistoryService searchHistoryService;
+	@Autowired
+	private BookmarkService bookmarkService;
 
 	public BookSearchResult searchBookInfo(SearchAppKey searchAppKey, Long memberId) {
 		saveSearchHistory(searchAppKey, memberId);
-		return bookRepository.searchBookInfo(searchAppKey);
+		BookSearchResult bookSearchResult = bookRepository.searchBookInfo(searchAppKey);
+		List<Document> documents = bookSearchResult.getDocuments();
+		initMemberBookmarked(memberId, documents);
+		return bookSearchResult;
 	}
 
+	private void initMemberBookmarked(Long memberId, List<Document> documents) {
+		documents.stream().map(document -> {
+			String isbn = document.getIsbn();
+			document.setBookMarked(bookmarkService.isExistBookmark(memberId,isbn));
+			return this;
+		}).collect(Collectors.toList());
+	}
 
 	public Document detailSearch(SearchAppKey searchAppKey) {
 		try{

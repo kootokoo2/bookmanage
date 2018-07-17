@@ -29,5 +29,6 @@ public class Document {
 	private String title;
 	private String url;
 	private List<Translator> translators;
+	private boolean bookMarked;
 }
 

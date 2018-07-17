@@ -1,6 +1,8 @@
-package com.koo.member.domain.bookmark;
+package com.koo.bookmark.domain.bookmark;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,9 +12,7 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
-@AllArgsConstructor
 public class Bookmark {
 	@Id
 	@GeneratedValue

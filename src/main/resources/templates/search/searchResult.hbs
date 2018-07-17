@@ -19,8 +19,9 @@
         <td class="text-center">{{this.arthors}}</td>
         <td class="text-center">{{this.publisher}}</td>
         <td class="text-center">{{this.status}}</td>
+
         <td class="text-center">
-          {{> bookmark/bookmark}}
+          <input type="checkbox" class="checkbox" data-isbn="{{this.isbn}}" >
         </td>
         <td>
           <button type="button" class="btn btn-primary detail-button" onclick="searchDetailBook({{this.isbn}})">

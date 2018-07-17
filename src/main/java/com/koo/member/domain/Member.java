@@ -1,9 +1,10 @@
 package com.koo.member.domain;
 
-import com.koo.member.domain.bookmark.Bookmark;
+import com.koo.bookmark.domain.bookmark.Bookmark;
 import com.koo.member.domain.searchhistory.SearchHistory;
 import com.koo.utils.timelistener.CreatedAndModifiedEntity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @Entity
 @Setter
 @Getter
+@NoArgsConstructor
 @ToString
 public class Member extends CreatedAndModifiedEntity {
 	@Id
@@ -25,10 +27,6 @@ public class Member extends CreatedAndModifiedEntity {
 	private String userId;
 	@Column
 	private String password;
-
-	private String getPassword() {
-		return password;
-	}
 
 	public boolean match(String password) {
 		return this.password.equals(password);
@@ -51,4 +49,8 @@ public class Member extends CreatedAndModifiedEntity {
 		return isbnList.contains(isbn);
 	}
 
+	public Member(String userId, String password) {
+		this.userId = userId;
+		this.password = password;
+	}
 }

@@ -1,4 +1,4 @@
-package com.koo.member.application.bookmark;
+package com.koo.bookmark.application;
 
 import lombok.*;
 
