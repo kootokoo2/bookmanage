@@ -1,7 +1,18 @@
 <div class="well well-lg">
   <h4 class="blue">book detail</h4>
   <div class="row">
-
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="user-name3" class="col-md-3"> bookmarked </label>
+        <td class="text-center">
+          <input type="checkbox" class="checkbox" data-isbn="{{document.isbn}}"
+            {{#if bookMarked}}
+                 checked
+            {{/if}}
+          />
+        </td>
+      </div>
+    </div>
   </div>
 
   <div class="row">
@@ -17,9 +28,11 @@
     <div class="col-md-6">
       <div class="form-group row">
         <label for="user-name3" class="col-md-3"> authors </label>
-        {{#each document.authors}}
-          <label class="col-md-7 " >{{this.name}}</label>
-        {{/each}}
+        <label class="col-md-7 ">
+          {{#each document.authors}}
+            {{this}}
+          {{/each}}
+        </label>
       </div>
     </div>
   </div>
@@ -29,13 +42,11 @@
       <div class="form-group row">
         <label for="user-name3" class="col-md-3"> translators </label>
         {{#each document.translators}}
-          <label class="col-md-7 ">{{this.name}}</label>
+          <label class="col-md-7 ">{{this}}</label>
         {{/each}}
       </div>
     </div>
   </div>
-
-
 
   <div class="row">
     <div class="col-md-6">
@@ -87,8 +98,6 @@
       </div>
     </div>
   </div>
-
-
   <div class="row">
     <div class="col-md-6">
       <div class="form-group row">
@@ -106,6 +115,5 @@
       </div>
     </div>
   </div>
-
-
 </div>
+

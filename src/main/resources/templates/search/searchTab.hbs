@@ -2,15 +2,15 @@
 
   <h2 class="col-md-6">search book</h2>
 
-  <form class="search-tab-container">
+  <div onsubmit="search()">
     <select id="searchTargetSelect" class="col-md-1">
       {{#each searchTargetNames }}
         <option value="{{this}}">{{this}}</option>
       {{/each}}
     </select>
     <input type="text" id="query" placeholder="검색어">
-    <button type="button" id="searchButton">검색</button>
-  </form>
+    <button type="button" id="searchButton" onclick="search()">검색</button>
+  </div>
 
 </div>
 

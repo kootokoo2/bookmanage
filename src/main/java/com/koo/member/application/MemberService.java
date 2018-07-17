@@ -43,7 +43,6 @@ public class MemberService {
 		if (foundMember.isPresent()) {
 			throw new ExistUserException("userId가 존재 합니다.");
 		}
-
 	}
 
 	private Member convertToMember(String userId, String password) {

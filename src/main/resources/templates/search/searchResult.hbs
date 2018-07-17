@@ -1,6 +1,6 @@
 <div class="panel panel-primary" style="padding: 1px">
   <div class="panel-heading">
-    <h2 class="panel-title">Campaign List</h2>
+    <h2 class="panel-title">search result</h2>
   </div>
   <table class="table table-striped table-hover table-bordered">
     <thead class="thead-strong">
@@ -9,7 +9,6 @@
     <th>authors</th>
     <th>publisher</th>
     <th>status</th>
-    <th>marked</th>
     <td>detail</td>
     </thead>
     <tbody>
@@ -20,16 +19,8 @@
         <td class="text-center">{{this.publisher}}</td>
         <td class="text-center">{{this.status}}</td>
 
-        <td class="text-center">
-
-          <input type="checkbox" class="checkbox" data-isbn="{{this.isbn}}"
-                 {{#if this.bookMarked}}
-                   checked
-                 {{/if}}
-          />
-        </td>
         <td>
-          <button type="button" class="btn btn-primary detail-button" onclick="searchDetailBook({{this.isbn}})">
+          <button type="button" onclick="detail('{{this.isbn}}')" class="btn btn-primary detail-button">
             Detail
           </button>
         </td>
@@ -39,4 +30,3 @@
     </tbody>
   </table>
 </div>
-

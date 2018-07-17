@@ -19,23 +19,11 @@ public class BookSearchService {
 	private BookRepository bookRepository;
 	@Autowired
 	private SearchHistoryService searchHistoryService;
-	@Autowired
-	private BookmarkService bookmarkService;
 
 	public BookSearchResult searchBookInfo(SearchAppKey searchAppKey, Long memberId) {
 		saveSearchHistory(searchAppKey, memberId);
 		BookSearchResult bookSearchResult = bookRepository.searchBookInfo(searchAppKey);
-		List<Document> documents = bookSearchResult.getDocuments();
-		initMemberBookmarked(memberId, documents);
 		return bookSearchResult;
-	}
-
-	private void initMemberBookmarked(Long memberId, List<Document> documents) {
-		documents.stream().map(document -> {
-			String isbn = document.getIsbn();
-			document.setBookMarked(bookmarkService.isExistBookmark(memberId,isbn));
-			return this;
-		}).collect(Collectors.toList());
 	}
 
 	public Document detailSearch(SearchAppKey searchAppKey) {
@@ -43,7 +31,7 @@ public class BookSearchService {
 			BookSearchResult bookSearchResult = bookRepository.searchBookInfo(searchAppKey);
 			return bookSearchResult.getDocuments().get(0);
 		} catch (Exception e) {
-			throw new DetailSearchFailedException("상세 정보를 조회 할 수 없습니다");
+			throw new DetailSearchFailedException("상세 정보를 조회 할 수 없습니다. searchKey : " + searchAppKey.toString());
 		}
 
 	}
@@ -52,8 +40,5 @@ public class BookSearchService {
 		searchHistoryService.saveSearched(memberId, searchAppKey.getTarget(), searchAppKey.getQuery());
 	}
 
-	public List<String> getSearchTargetList() {
-		return Arrays.asList(SearchTarget.values()).stream().map(a -> a.name())
-			.collect(Collectors.toList());
-	}
+
 }

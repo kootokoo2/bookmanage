@@ -44,13 +44,4 @@ public class Member extends CreatedAndModifiedEntity {
 		return passwordEncoder.encode(origin);
 	}
 
-	public boolean hasBookmakrAlready(String isbn) {
-		List<String> isbnList = this.bookmarkList.stream().map(bookmark -> bookmark.getIsbn()).collect(Collectors.toList());
-		return isbnList.contains(isbn);
-	}
-
-	public Member(String userId, String password) {
-		this.userId = userId;
-		this.password = password;
-	}
 }

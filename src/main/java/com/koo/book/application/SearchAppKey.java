@@ -7,9 +7,9 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class SearchAppKey {
 	@NotNull
 	private String query;

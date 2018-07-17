@@ -1,5 +1,9 @@
 package com.koo.book.application;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public enum SearchTarget {
 	all("전체"),
 	title("제목"),
@@ -13,6 +17,11 @@ public enum SearchTarget {
 
 	SearchTarget(String description) {
 		this.description = description;
+	}
+
+	public static List<String> getSearchTargets() {
+		return Arrays.asList(SearchTarget.values()).stream().map(a -> a.name())
+			.collect(Collectors.toList());
 	}
 
 }

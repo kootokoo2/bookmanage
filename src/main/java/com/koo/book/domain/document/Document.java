@@ -1,7 +1,5 @@
 package com.koo.book.domain.document;
 
-import com.koo.book.domain.document.author.Author;
-import com.koo.book.domain.document.transrator.Translator;
 import lombok.*;
 
 import java.util.Date;
@@ -13,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 public class Document {
-	private List<Author> authors;
+	private List<String> authors;
 	private String barcode;
 	private String category;
 	private String contents;
@@ -28,7 +26,6 @@ public class Document {
 	private String thumbnail;
 	private String title;
 	private String url;
-	private List<Translator> translators;
-	private boolean bookMarked;
+	private List<String> translators;
 }
 
