@@ -7,8 +7,9 @@
 
     <th>title</th>
     <th>authors</th>
-    <th>publisher</th>
+    <th>sale_price</th>
     <th>status</th>
+    <th>date</th>
     <td>detail</td>
     </thead>
     <tbody>
@@ -16,9 +17,9 @@
       <tr>
         <td class="text-center">{{this.title}}</td>
         <td class="text-center">{{this.authors}}</td>
-        <td class="text-center">{{this.publisher}}</td>
+        <td class="text-center">{{this.sale_price}}</td>
         <td class="text-center">{{this.status}}</td>
-
+        <td class="text-center">{{this.datetime}}</td>
         <td>
           <button type="button" onclick="detail('{{this.isbn}}')" class="btn btn-primary detail-button">
             Detail

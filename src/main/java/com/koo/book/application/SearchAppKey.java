@@ -20,5 +20,5 @@ public class SearchAppKey {
 	private Integer size;
 	@NotNull
 	private SearchTarget target;
-	private String category;
+	private Integer category;
 }

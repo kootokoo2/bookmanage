@@ -13,6 +13,7 @@ public enum SearchTarget {
 	overview("책소개에서 검색"),
 	publisher("출판사에서 검색");
 
+
 	private String description;
 
 	SearchTarget(String description) {
