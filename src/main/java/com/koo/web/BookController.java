@@ -4,6 +4,7 @@ import com.koo.book.application.BookSearchService;
 import com.koo.book.application.SearchAppKey;
 import com.koo.book.application.SearchTarget;
 import com.koo.book.domain.BookSearchResult;
+import com.koo.book.domain.document.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ public class BookController {
 	private BookSearchService bookSearchService;
 
 	@GetMapping("/searchBook/{target}/{query}")
-	public ModelAndView search(@PathVariable String target,@PathVariable String query, @CookieValue(value = "memberId") String memberId) {
+	public ModelAndView search(@PathVariable String target, @PathVariable String query, @CookieValue(value = "memberId") String memberId) {
 		SearchAppKey searchAppKey = SearchAppKey.builder()
 			.target(SearchTarget.valueOf(target))
 			.query(query)
@@ -30,6 +31,20 @@ public class BookController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("search/searchResult");
 		modelAndView.addObject("bookSearchResult", bookSearchResult);
+		return modelAndView;
+	}
+
+	@GetMapping("/bookDetail/{target}/{query}")
+	public ModelAndView detailSearch(@PathVariable String target, @PathVariable String query) {
+		SearchAppKey searchAppKey = SearchAppKey.builder()
+			.target(SearchTarget.valueOf(target))
+			.query(query)
+			.build();
+		Document document = bookSearchService.detailSearch(searchAppKey);
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("book/detail");
+		modelAndView.addObject("document", document);
 		return modelAndView;
 	}
 

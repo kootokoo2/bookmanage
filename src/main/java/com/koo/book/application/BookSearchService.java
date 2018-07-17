@@ -1,7 +1,9 @@
 package com.koo.book.application;
 
+import com.koo.book.application.exception.DetailSearchFailedException;
 import com.koo.book.domain.BookRepository;
 import com.koo.book.domain.BookSearchResult;
+import com.koo.book.domain.document.Document;
 import com.koo.member.application.searchhistory.SearchHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,17 @@ public class BookSearchService {
 	public BookSearchResult searchBookInfo(SearchAppKey searchAppKey, Long memberId) {
 		saveSearchHistory(searchAppKey, memberId);
 		return bookRepository.searchBookInfo(searchAppKey);
+	}
+
+
+	public Document detailSearch(SearchAppKey searchAppKey) {
+		try{
+			BookSearchResult bookSearchResult = bookRepository.searchBookInfo(searchAppKey);
+			return bookSearchResult.getDocuments().get(0);
+		} catch (Exception e) {
+			throw new DetailSearchFailedException("상세 정보를 조회 할 수 없습니다");
+		}
+
 	}
 
 	private void saveSearchHistory(SearchAppKey searchAppKey, Long memberId) {

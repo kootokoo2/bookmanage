@@ -28,15 +28,22 @@ public class ExternalBookRestTemplate implements BookRepository {
 
 	@Override
 	public BookSearchResult searchBookInfo(SearchAppKey searchAppKey) {
-		URI uri = UriComponentsBuilder.newInstance()
-			.scheme("https")
-			.host(HOST)
-			.path(PATH)
-			.queryParams(MultiValueMapConverter.convert(searchAppKey))
-			.build()
-			.encode()
-			.toUri();
+		URI uri = makeUri(searchAppKey);
+		return request(uri);
+	}
 
+	private URI makeUri(SearchAppKey searchAppKey) {
+		return UriComponentsBuilder.newInstance()
+				.scheme("https")
+				.host(HOST)
+				.path(PATH)
+				.queryParams(MultiValueMapConverter.convert(searchAppKey))
+				.build()
+				.encode()
+				.toUri();
+	}
+
+	private BookSearchResult request(URI uri) {
 		HttpHeaders header = new HttpHeaders();
 		header.add("Authorization", API_AUTH);
 		HttpEntity<String> entity = new HttpEntity<String>("parameters", header);

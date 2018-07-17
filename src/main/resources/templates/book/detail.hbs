@@ -1,0 +1,111 @@
+<div class="well well-lg">
+  <h4 class="blue">book detail</h4>
+  <div class="row">
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="user-name3" class="col-md-3"> title </label>
+        <label class="col-md-7 ">{{document.title}}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="user-name3" class="col-md-3"> authors </label>
+        {{#each documents.authors}}
+          <label class="col-md-7 " >{{this.name}}</label>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="user-name3" class="col-md-3"> translators </label>
+        {{#each documents.translators}}
+          <label class="col-md-7 ">{{this.name}}</label>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="user-name3" class="col-md-3"> barcode </label>
+        <label id="name" class="col-md-7 ">{{document.barcode}}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="user-name3" class="col-md-3"> category </label>
+        <label id="name" class="col-md-7 ">{{document.category}}</label>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="user-name3" class="col-md-3"> contents </label>
+        <label id="name" class="col-md-7 ">{{document.contents}}</label>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="user-name3" class="col-md-3"> price </label>
+        <label id="name" class="col-md-7 ">{{document.price}}</label>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="user-name3" class="col-md-3"> sale_price </label>
+        <label id="name" class="col-md-7 ">{{document.sale_price}}</label>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="user-name3" class="col-md-3"> status </label>
+        <label id="name" class="col-md-7 ">{{document.status}}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="user-name3" class="col-md-3"> thumbnail </label>
+        <img src="{{document.thumbnail}}">
+      </div>
+    </div>
+  </div>
+
+
+</div>
