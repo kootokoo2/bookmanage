@@ -20,9 +20,6 @@ public class Bookmark {
 	private Long id;
 
 	@Column
-	private String bookTitle;
-
-	@Column
 	private String isbn;
 
 	@Column

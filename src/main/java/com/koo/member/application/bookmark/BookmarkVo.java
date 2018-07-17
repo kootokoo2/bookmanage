@@ -9,6 +9,5 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class BookmarkVo {
 	private Long memberId;
-	private String title;
 	private String isbn;
 }

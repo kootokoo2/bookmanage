@@ -9,6 +9,7 @@
     <th>authors</th>
     <th>publisher</th>
     <th>status</th>
+    <th>marked</th>
     <td>detail</td>
     </thead>
     <tbody>
@@ -18,6 +19,9 @@
         <td class="text-center">{{this.arthors}}</td>
         <td class="text-center">{{this.publisher}}</td>
         <td class="text-center">{{this.status}}</td>
+        <td class="text-center">
+          {{> bookmark/bookmark}}
+        </td>
         <td>
           <button type="button" class="btn btn-primary detail-button" onclick="searchDetailBook({{this.isbn}})">
             Detail
