@@ -4,6 +4,7 @@ import com.koo.book.application.exception.BookSearchFailedException;
 import com.koo.book.domain.BookRepository;
 import com.koo.book.domain.BookSearchResult;
 import com.koo.book.domain.document.Document;
+import com.koo.book.infra.SearchAppKey;
 import com.koo.member.application.searchhistory.SearchHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

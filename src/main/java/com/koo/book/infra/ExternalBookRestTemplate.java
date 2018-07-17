@@ -1,6 +1,5 @@
 package com.koo.book.infra;
 
-import com.koo.book.application.SearchAppKey;
 import com.koo.book.domain.BookRepository;
 import com.koo.book.domain.BookSearchResult;
 import com.koo.utils.MultiValueMapConverter;

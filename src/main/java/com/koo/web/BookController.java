@@ -1,10 +1,12 @@
 package com.koo.web;
 
 import com.koo.book.application.BookSearchService;
-import com.koo.book.application.SearchAppKey;
+import com.koo.book.application.SearchAppKeyDto;
+import com.koo.book.infra.SearchAppKey;
 import com.koo.book.application.SearchSort;
 import com.koo.book.application.SearchTarget;
 import com.koo.book.domain.BookSearchResult;
+import com.koo.book.domain.category.Category;
 import com.koo.book.domain.document.Document;
 import com.koo.bookmark.application.BookmarkService;
 import com.koo.web.exception.QueryEmptyException;
@@ -28,14 +30,27 @@ public class BookController {
 	private BookmarkService bookmarkService;
 
 	@PostMapping("/searchBook")
-	public ModelAndView search(@RequestBody @Valid SearchAppKey searchAppKey,
+	public ModelAndView search(@RequestBody @Valid SearchAppKeyDto searchAppKeyDto,
 		@CookieValue(value = "memberId") String memberId) {
-		BookSearchResult bookSearchResult = bookSearchService.searchBookInfo(searchAppKey, Long.valueOf(memberId));
+		SearchAppKey searchAppKey = convert(searchAppKeyDto);
 
+		BookSearchResult bookSearchResult = bookSearchService.searchBookInfo(searchAppKey, Long.valueOf(memberId));
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("search/searchResult");
 		modelAndView.addObject("bookSearchResult", bookSearchResult);
 		return modelAndView;
+	}
+
+	private SearchAppKey convert(SearchAppKeyDto searchAppKeyDto) {
+		SearchAppKey searchAppKey = new SearchAppKey();
+
+		searchAppKey.setQuery(searchAppKeyDto.getQuery());
+		searchAppKey.setCategory(searchAppKeyDto.getCategory().getCategoryNumber());
+		searchAppKey.setPage(searchAppKeyDto.getPage());
+		searchAppKey.setSize(searchAppKeyDto.getSize());
+		searchAppKey.setSort(searchAppKeyDto.getSort());
+		searchAppKey.setTarget(searchAppKeyDto.getTarget());
+		return searchAppKey;
 	}
 
 	@GetMapping("/bookDetail/{target}/{query}")
@@ -76,6 +91,7 @@ public class BookController {
 		modelAndView.setViewName("search/main");
 		modelAndView.addObject("searchTargetNames", SearchTarget.getSearchTargets());
 		modelAndView.addObject("searchSortNames", SearchSort.getSearchSrots());
+		modelAndView.addObject("categoryNames", Category.getSearchTargets());
 		return modelAndView;
 	}
 

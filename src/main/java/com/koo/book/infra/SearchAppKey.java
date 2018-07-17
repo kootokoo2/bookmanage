@@ -1,5 +1,8 @@
-package com.koo.book.application;
+package com.koo.book.infra;
 
+import com.koo.book.application.SearchSort;
+import com.koo.book.application.SearchTarget;
+import com.koo.book.domain.category.Category;
 import lombok.*;
 
 import javax.validation.constraints.Max;
@@ -11,14 +14,10 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @ToString
 public class SearchAppKey {
-	@NotNull
 	private String query;
 	private SearchSort sort;
-	@Max(50)
 	private Integer page;
-	@Max(50)
 	private Integer size;
-	@NotNull
 	private SearchTarget target;
 	private Integer category;
 }

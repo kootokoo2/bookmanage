@@ -1,6 +1,6 @@
 package com.koo.utils
 
-import com.koo.book.application.SearchAppKey
+import com.koo.book.infra.SearchAppKey
 import com.koo.book.application.SearchTarget
 import spock.lang.Specification
 

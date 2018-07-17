@@ -11,6 +11,7 @@ function search() {
   var form = {
     target: $("#searchTargetSelect option:selected").text(),
     sort: $("#searchSortSelect option:selected").text(),
+    category: $("#categorySelect option:selected").text(),
     query: $("#query").val(),
     page: $("#page").val(),
     size: $("#size").val()
