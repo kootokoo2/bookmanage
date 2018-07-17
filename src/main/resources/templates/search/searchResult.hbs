@@ -21,7 +21,12 @@
         <td class="text-center">{{this.status}}</td>
 
         <td class="text-center">
-          <input type="checkbox" class="checkbox" data-isbn="{{this.isbn}}" >
+
+          <input type="checkbox" class="checkbox" data-isbn="{{this.isbn}}"
+                 {{#if this.bookMarked}}
+                   checked
+                 {{/if}}
+          />
         </td>
         <td>
           <button type="button" class="btn btn-primary detail-button" onclick="searchDetailBook({{this.isbn}})">
