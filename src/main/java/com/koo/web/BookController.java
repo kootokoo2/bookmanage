@@ -75,7 +75,7 @@ public class BookController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("search/main");
 		modelAndView.addObject("searchTargetNames", SearchTarget.getSearchTargets());
-		modelAndView.addObject("searchSorts", SearchSort.getSearchSrots());
+		modelAndView.addObject("searchSortNames", SearchSort.getSearchSrots());
 		return modelAndView;
 	}
 

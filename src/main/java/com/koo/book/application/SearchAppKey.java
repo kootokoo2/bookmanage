@@ -15,9 +15,9 @@ public class SearchAppKey {
 	private String query;
 	private SearchSort sort;
 	@Max(50)
-	private int page = 1;
+	private Integer page;
 	@Max(50)
-	private int size = 10;
+	private Integer size;
 	@NotNull
 	private SearchTarget target;
 	private String category;

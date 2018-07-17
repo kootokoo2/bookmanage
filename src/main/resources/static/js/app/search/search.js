@@ -10,7 +10,10 @@ function detail(isbn10, isbn13) {
 function search() {
   var form = {
     target: $("#searchTargetSelect option:selected").text(),
-    query: $("#query").val()
+    sort: $("#searchSortSelect option:selected").text(),
+    query: $("#query").val(),
+    page: $("#page").val(),
+    size: $("#size").val()
   };
 
   $.ajax({
